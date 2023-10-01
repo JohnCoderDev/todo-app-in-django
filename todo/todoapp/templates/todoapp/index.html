@@ -1,0 +1,12 @@
+{% if task_list %}
+<ul>
+  {% for task in task_list %}
+  <li>
+    <a href="{% url 'todoapp:task_detail' task.id %}">{{ task.text }}</a>
+    {% if not task.concluded %} Task not concluded {% else %} Task concluded {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+  <p>No task was created yet.</p>
+{% endif %}

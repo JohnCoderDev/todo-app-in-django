@@ -1,0 +1,17 @@
+
+<form action="{% url 'todoapp:mark_as_complete' task.id %}" method='post'>
+  {% csrf_token %}
+  <fieldset>
+    <legend><h1>{{ task.text }}</h1></legend>
+    <p>created date = {{ task.create_date }}</p>
+    <p>
+      {% if task.conclusion_date %} 
+        conclusion date = {{ task.conclusion_date }} 
+      {% else %} 
+        No conclusion date available 
+      {% endif %}
+    </p>
+  </fieldset>
+  <input type='submit' value="{% if task.concluded %}Mark as incomplete{% else %}Mark as complete{% endif %}" />
+  <a href="{% url 'todoapp:index' %}">Go back</a>
+</form>
